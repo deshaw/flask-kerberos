@@ -93,4 +93,4 @@ The full API reference:
 
 .. _Flask: http://flask.pocoo.org/
 .. _Kerberos: http://wikipedia.org/wiki/Kerberos_(protocol)
-.. _python-kerberos: http://pypi.python.org.pypi/kerberos
+.. _python-kerberos: http://pypi.python.org/pypi/kerberos
