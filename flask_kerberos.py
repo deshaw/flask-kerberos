@@ -13,8 +13,15 @@ _SERVICE_NAME = None
 
 def init_kerberos(app, service='HTTP', hostname=gethostname()):
     '''
-    Configure the GSSAPI service name, and validate the presence of a kerberos
-    keytab
+    Configure the GSSAPI service name, and validate the presence of the
+    appropriate principal in the kerberos keytab.
+
+    :param app: a flask application
+    :type app: flask.Flask
+    :param service: GSSAPI service name
+    :type service: str
+    :param hostname: hostname the service runs under
+    :type hostname: str
     '''
     global _SERVICE_NAME
     _SERVICE_NAME = "%s@%s" % (service, hostname)
@@ -79,8 +86,18 @@ def _gssapi_authenticate(token):
             kerberos.authGSSServerClean(state)
 
 
-def requires_authentication(f):
-    @wraps(f)
+def requires_authentication(function):
+    '''
+    Require that the wrapped view function only be called by users
+    authenticated with Kerberos. The view function will have the authenticated
+    users principal passed to it as its first argument.
+
+    :param function: flask view function
+    :type function: function
+    :returns: decorated function
+    :rtype: function
+    '''
+    @wraps(function)
     def decorated(*args, **kwargs):
         header = request.headers.get("Authorization")
         if header:
@@ -88,7 +105,7 @@ def requires_authentication(f):
             token = ''.join(header.split()[1:])
             rc = _gssapi_authenticate(token)
             if rc == kerberos.AUTH_GSS_COMPLETE:
-                response = f(ctx.kerberos_user, *args, **kwargs)
+                response = function(ctx.kerberos_user, *args, **kwargs)
                 response = make_response(response)
                 response.headers['WWW-Authenticate'] = ctx.kerberos_token
                 return response
