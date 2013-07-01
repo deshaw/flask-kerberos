@@ -61,7 +61,7 @@ def _gssapi_authenticate(token):
     ctx = stack.top
     try:
         rc, state = kerberos.authGSSServerInit(_SERVICE_NAME)
-        if rc != 1:
+        if rc != kerberos.AUTH_GSS_COMPLETE:
             return None
         rc = kerberos.authGSSServerStep(state, token)
         if rc == kerberos.AUTH_GSS_COMPLETE:
