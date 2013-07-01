@@ -82,6 +82,13 @@ Changes
 
 -     initial implementation
 
+Todo
+----
+
+-     push documentation to `Read the Docs <http://readthedocs.org/>`_
+-     verify setup.py
+-     tag & push code to `pypi <http://pypi.python.org/pypi>`_
+
 API References
 --------------
 
