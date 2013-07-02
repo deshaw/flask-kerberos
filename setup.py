@@ -1,21 +1,21 @@
 """
-Flask-GSSAPI
+Flask-Kerberos
 ------------
 
-Provides GSSAPI authentication support for Flask applications
+Provides Kerberos authentication support for Flask applications
 """
 
 from setuptools import setup
 
-setup(name='Flask-GSSAPI',
+setup(name='Flask-Kerberos',
       version='1.0.0',
-      url='http://github.com/mkomitee/flask-gssapi',
+      url='http://github.com/mkomitee/flask-kerberos',
       license='BSD',
       author='Michael Komitee',
       author_email='mkomitee@gmail.com',
-      description='GSSAPI authentication support for Flask',
+      description='Kerberos authentication support for Flask',
       long_description=__doc__,
-      packages=['flask_gssapi'],
+      packages=['flask_kerberos'],
       zip_safe=False,
       include_package_data=True,
       platforms='any',
