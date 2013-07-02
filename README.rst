@@ -84,11 +84,6 @@ Changes
 
 -     initial implementation
 
-Todo
-----
-
--     verify setup.py
--     tag & push code to `pypi <http://pypi.python.org/pypi>`_
 
 API References
 --------------
