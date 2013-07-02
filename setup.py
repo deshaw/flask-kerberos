@@ -3,6 +3,8 @@ Flask-Kerberos
 ------------
 
 Provides Kerberos authentication support for Flask applications
+
+See https://flask-kerberos.readthedocs.org/en/latest/ for more information.
 """
 
 from setuptools import setup
