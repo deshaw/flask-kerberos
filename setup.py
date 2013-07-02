@@ -27,4 +27,6 @@ setup(name='Flask-Kerberos',
                    'Operating System :: OS Independent',
                    'Programming Language :: Python',
                    'Topic :: Internet :: WWW/HTTP',
-                   'Topic :: Software Development :: Libraries :: Python Modules'])
+                   'Topic :: Software Development :: Libraries :: Python Modules'],
+      test_suite='test_flask_kerberos',
+      tests_require=['mock'])
