@@ -10,6 +10,8 @@ Unfortunately, as is the case with most things kerberos, it requires a kerberos
 environment as well as a keytab. Setting that up is outside the scope of this
 document.
 
+The official copy of this documentation is available at `Read the Docs`_.
+
 Installation
 ------------
 
@@ -85,7 +87,6 @@ Changes
 Todo
 ----
 
--     push documentation to `Read the Docs <http://readthedocs.org/>`_
 -     verify setup.py
 -     tag & push code to `pypi <http://pypi.python.org/pypi>`_
 
@@ -101,3 +102,4 @@ The full API reference:
 .. _Flask: http://flask.pocoo.org/
 .. _Kerberos: http://wikipedia.org/wiki/Kerberos_(protocol)
 .. _python-kerberos: http://pypi.python.org/pypi/kerberos
+.. _Read the Docs: https://flask-kerberos.readthedocs.org/
