@@ -4,13 +4,18 @@ Flask-Kerberos
 
 Provides Kerberos authentication support for Flask applications
 
-See https://flask-kerberos.readthedocs.org/en/latest/ for more information.
+Links
+`````
+
+* `documentation <https://flask-kerberos.readthedocs.org/en/latest/>`_
+* `development version
+  <http://github.com/mkomitee/flask-kerberos/zipball/master#egg=Flask-Kerberos-dev>`_
 """
 
 from setuptools import setup
 
 setup(name='Flask-Kerberos',
-      version='1.0.0',
+      version='1.0.1',
       url='http://github.com/mkomitee/flask-kerberos',
       license='BSD',
       author='Michael Komitee',
@@ -23,7 +28,8 @@ setup(name='Flask-Kerberos',
       package_data={'': ['LICENSE', 'AUTHORS']},
       platforms='any',
       install_requires=['Flask', 'kerberos'],
-      classifiers=['Environment :: Web Environment',
+      classifiers=['Development Status :: 4 - Beta',
+                   'Environment :: Web Environment',
                    'Intended Audience :: Developers',
                    'License :: OSI Approved :: BSD License',
                    'Operating System :: OS Independent',
