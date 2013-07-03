@@ -79,13 +79,7 @@ To see a simple example, you can download the code `from github
 Changes
 -------
 
-1.0.1
-`````
-
--     adding dev link to package to support dev target installs
--     test suite now runnable via setup.py
-
-1.0.0
+1.0.2
 `````
 
 -     initial implementation

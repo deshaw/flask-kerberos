@@ -1,6 +1,6 @@
 """
 Flask-Kerberos
-------------
+--------------
 
 Provides Kerberos authentication support for Flask applications
 
@@ -10,12 +10,13 @@ Links
 * `documentation <https://flask-kerberos.readthedocs.org/en/latest/>`_
 * `development version
   <http://github.com/mkomitee/flask-kerberos/zipball/master#egg=Flask-Kerberos-dev>`_
+
 """
 
 from setuptools import setup
 
 setup(name='Flask-Kerberos',
-      version='1.0.1',
+      version='1.0.2',
       url='http://github.com/mkomitee/flask-kerberos',
       license='BSD',
       author='Michael Komitee',
