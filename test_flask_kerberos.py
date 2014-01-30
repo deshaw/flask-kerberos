@@ -51,7 +51,7 @@ class BasicAppTestCase(unittest.TestCase):
         r = c.get('/', headers={'Authorization': 'Negotiate CTOKEN'})
         self.assertEqual(r.status_code, 200)
         self.assertEqual(r.data, 'user@EXAMPLE.ORG')
-        self.assertEqual(r.headers.get('WWW-Authenticate'), 'STOKEN')
+        self.assertEqual(r.headers.get('WWW-Authenticate'), 'negotiate STOKEN')
         self.assertEqual(init.mock_calls, [mock.call('HTTP@example.org')])
         self.assertEqual(step.mock_calls, [mock.call(state, 'CTOKEN')])
         self.assertEqual(name.mock_calls, [mock.call(state)])
