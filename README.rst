@@ -79,6 +79,11 @@ To see a simple example, you can download the code `from github
 Changes
 -------
 
+1.0.3
+`````
+
+-     bug fixes
+
 1.0.2
 `````
 

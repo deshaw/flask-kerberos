@@ -16,7 +16,7 @@ Links
 from setuptools import setup
 
 setup(name='Flask-Kerberos',
-      version='1.0.2',
+      version='1.0.3',
       url='http://github.com/mkomitee/flask-kerberos',
       license='BSD',
       author='Michael Komitee',
