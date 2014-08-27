@@ -79,6 +79,11 @@ To see a simple example, you can download the code `from github
 Changes
 -------
 
+1.0.4
+`````
+
+-     fixes an exception triggered when a client doesn't request mutual authentication.
+
 1.0.3
 `````
 
