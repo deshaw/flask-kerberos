@@ -107,8 +107,9 @@ def requires_authentication(function):
             if rc == kerberos.AUTH_GSS_COMPLETE:
                 response = function(ctx.kerberos_user, *args, **kwargs)
                 response = make_response(response)
-                response.headers['WWW-Authenticate'] = ' '.join(['negotiate',
-                                                                 ctx.kerberos_token])
+                if ctx.kerberos_token is not None:
+                    response.headers['WWW-Authenticate'] = ' '.join(['negotiate',
+                                                                     ctx.kerberos_token])
                 return response
             elif rc != kerberos.AUTH_GSS_CONTINUE:
                 return _forbidden()

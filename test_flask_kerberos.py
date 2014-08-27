@@ -63,6 +63,33 @@ class BasicAppTestCase(unittest.TestCase):
     @mock.patch('kerberos.authGSSServerResponse')
     @mock.patch('kerberos.authGSSServerUserName')
     @mock.patch('kerberos.authGSSServerClean')
+    def test_authorized_no_mutual_auth(self, clean, name, response, step, init):
+        '''
+        Ensure that when a client does not request mutual authentication, we
+        don't provide a token & that we don't throw an exception.
+        '''
+        state = object()
+        init.return_value = (kerberos.AUTH_GSS_COMPLETE, state)
+        step.return_value = kerberos.AUTH_GSS_COMPLETE
+        name.return_value = "user@EXAMPLE.ORG"
+        response.return_value = None
+        flask_kerberos.init_kerberos(self.app, 'HTTP', 'example.org')
+        c = self.app.test_client()
+        r = c.get('/', headers={'Authorization': 'Negotiate CTOKEN'})
+        self.assertEqual(r.status_code, 200)
+        self.assertEqual(r.data, 'user@EXAMPLE.ORG')
+        self.assertEqual(r.headers.get('WWW-Authenticate'), None)
+        self.assertEqual(init.mock_calls, [mock.call('HTTP@example.org')])
+        self.assertEqual(step.mock_calls, [mock.call(state, 'CTOKEN')])
+        self.assertEqual(name.mock_calls, [mock.call(state)])
+        self.assertEqual(response.mock_calls, [mock.call(state)])
+        self.assertEqual(clean.mock_calls, [mock.call(state)])
+
+    @mock.patch('kerberos.authGSSServerInit')
+    @mock.patch('kerberos.authGSSServerStep')
+    @mock.patch('kerberos.authGSSServerResponse')
+    @mock.patch('kerberos.authGSSServerUserName')
+    @mock.patch('kerberos.authGSSServerClean')
     def test_forbidden(self, clean, name, response, step, init):
         '''
         Ensure that when the client sends an incorrect authorization token,
