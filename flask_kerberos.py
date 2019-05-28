@@ -32,7 +32,7 @@ def init_kerberos(app, service='HTTP', hostname=gethostname()):
         try:
             principal = kerberos.getServerPrincipalDetails(service, hostname)
         except kerberos.KrbError as exc:
-            app.logger.warn("Kerberos: %s" % exc.message[0])
+            app.logger.warn("Kerberos: %s" % str(e))
         else:
             app.logger.info("Kerberos: server is %s" % principal)
 
