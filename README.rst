@@ -79,6 +79,11 @@ To see a simple example, you can download the code `from github
 Changes
 -------
 
+2.0.0
+`````
+
+-     Update license from BSD-2-Clause to BSD-3-Clause
+
 1.0.4
 `````
 
