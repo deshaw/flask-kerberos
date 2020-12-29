@@ -79,10 +79,11 @@ To see a simple example, you can download the code `from github
 Changes
 -------
 
-2.0.0
-`````
+2.0.0 (Unreleased)
+``````````````````
 
 -     Update license from BSD-2-Clause to BSD-3-Clause
+-     Project was moved to the D. E. Shaw Org
 
 1.0.4
 `````
