@@ -124,6 +124,6 @@ This plugin was contributed back to the community by the `D. E. Shaw group
 
    <p align="center">
        <a href="https://www.deshaw.com">
-          <img src="https://www.deshaw.com/assets/logos/black_logo_417x125.png" alt" height="75" >
+          <img src="https://www.deshaw.com/assets/logos/blue_logo_417x125.png" alt" height="75" >
        </a>
    </p>
