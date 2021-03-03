@@ -27,12 +27,12 @@ def init_kerberos(app, service='HTTP', hostname=gethostname()):
     _SERVICE_NAME = "%s@%s" % (service, hostname)
 
     if 'KRB5_KTNAME' not in environ:
-        app.logger.warn("Kerberos: set KRB5_KTNAME to your keytab file")
+        app.logger.warning("Kerberos: set KRB5_KTNAME to your keytab file")
     else:
         try:
             principal = kerberos.getServerPrincipalDetails(service, hostname)
         except kerberos.KrbError as exc:
-            app.logger.warn("Kerberos: %s" % exc.message[0])
+            app.logger.warning("Kerberos: %s" % exc.message[0])
         else:
             app.logger.info("Kerberos: server is %s" % principal)
 
