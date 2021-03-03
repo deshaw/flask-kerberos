@@ -82,8 +82,12 @@ def _gssapi_authenticate(token):
     except kerberos.GSSError:
         return None
     finally:
-        if state:
-            kerberos.authGSSServerClean(state)
+        # ignore any cleanup errors from GSS
+        try:
+            if state:
+                kerberos.authGSSServerClean(state)
+        except:
+            pass
 
 
 def requires_authentication(function):
