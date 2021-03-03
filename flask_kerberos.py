@@ -24,7 +24,7 @@ def init_kerberos(app, service='HTTP', hostname=gethostname()):
     :type hostname: str
     '''
     global _SERVICE_NAME
-    _SERVICE_NAME = "%s@%s" % (service, hostname)
+    _SERVICE_NAME = "{:s}@{:s}".format(service, hostname)
 
     if 'KRB5_KTNAME' not in environ:
         app.logger.warn("Kerberos: set KRB5_KTNAME to your keytab file")
@@ -32,9 +32,9 @@ def init_kerberos(app, service='HTTP', hostname=gethostname()):
         try:
             principal = kerberos.getServerPrincipalDetails(service, hostname)
         except kerberos.KrbError as exc:
-            app.logger.warn("Kerberos: %s" % exc.message[0])
+            app.logger.warn("Kerberos: {:s}".format(exc.message[0]))
         else:
-            app.logger.info("Kerberos: server is %s" % principal)
+            app.logger.info("Kerberos: server is {:s}".format(principal))
 
 
 def _unauthorized():
