@@ -79,6 +79,12 @@ To see a simple example, you can download the code `from github
 Changes
 -------
 
+2.0.0 (Unreleased)
+``````````````````
+
+-     Update license from BSD-2-Clause to BSD-3-Clause
+-     Project was moved to the D. E. Shaw Org
+
 1.0.4
 `````
 
@@ -108,3 +114,16 @@ The full API reference:
 .. _Kerberos: http://wikipedia.org/wiki/Kerberos_(protocol)
 .. _python-kerberos: http://pypi.python.org/pypi/kerberos
 .. _Read the Docs: https://flask-kerberos.readthedocs.org/
+
+History
+=======
+This plugin was contributed back to the community by the `D. E. Shaw group
+<https://www.deshaw.com/>`_.
+
+.. raw:: html
+
+   <p align="center">
+       <a href="https://www.deshaw.com">
+          <img src="https://www.deshaw.com/assets/logos/blue_logo_417x125.png" alt" height="75" >
+       </a>
+   </p>
