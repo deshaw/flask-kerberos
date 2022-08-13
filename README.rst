@@ -115,6 +115,12 @@ The full API reference:
 .. _python-kerberos: http://pypi.python.org/pypi/kerberos
 .. _Read the Docs: https://flask-kerberos.readthedocs.org/
 
+Contributing
+=======
+We love contributions! Before you can contribute, please sign and submit this
+`Contributor License Agreement (CLA) <https://www.deshaw.com/oss/cla>`_.
+This CLA is in place to protect all users of this project.
+
 History
 =======
 This plugin was contributed back to the community by the `D. E. Shaw group
