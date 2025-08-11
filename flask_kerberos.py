@@ -1,7 +1,7 @@
 import kerberos
 
 from flask import Response
-from flask import _request_ctx_stack as stack
+from flask import g
 from flask import make_response
 from flask import request
 from functools import wraps
@@ -10,6 +10,11 @@ from os import environ
 
 _SERVICE_NAME = None
 
+def get_ctx():
+    if 'flask_kerberos' not in g:
+        g.flask_kerberos = {}
+
+    return g.flask_kerberos
 
 def init_kerberos(app, service='HTTP', hostname=gethostname()):
     '''
@@ -65,15 +70,15 @@ def _gssapi_authenticate(token):
     @rtype: int or None
     '''
     state = None
-    ctx = stack.top
+    ctx = get_ctx()
     try:
         rc, state = kerberos.authGSSServerInit(_SERVICE_NAME)
         if rc != kerberos.AUTH_GSS_COMPLETE:
             return None
         rc = kerberos.authGSSServerStep(state, token)
         if rc == kerberos.AUTH_GSS_COMPLETE:
-            ctx.kerberos_token = kerberos.authGSSServerResponse(state)
-            ctx.kerberos_user = kerberos.authGSSServerUserName(state)
+            ctx['kerberos_token'] = kerberos.authGSSServerResponse(state)
+            ctx['kerberos_user'] = kerberos.authGSSServerUserName(state)
             return rc
         elif rc == kerberos.AUTH_GSS_CONTINUE:
             return kerberos.AUTH_GSS_CONTINUE
@@ -101,15 +106,15 @@ def requires_authentication(function):
     def decorated(*args, **kwargs):
         header = request.headers.get("Authorization")
         if header:
-            ctx = stack.top
+            ctx = get_ctx()
             token = ''.join(header.split()[1:])
             rc = _gssapi_authenticate(token)
-            if rc == kerberos.AUTH_GSS_COMPLETE:
-                response = function(ctx.kerberos_user, *args, **kwargs)
+            if rc == kerberos.AUTH_GSS_COMPLETE and 'kerberos_user' in ctx:
+                response = function(ctx['kerberos_user'], *args, **kwargs)
                 response = make_response(response)
-                if ctx.kerberos_token is not None:
+                if 'kerberos_token' in ctx:
                     response.headers['WWW-Authenticate'] = ' '.join(['negotiate',
-                                                                     ctx.kerberos_token])
+                                                                     ctx['kerberos_token']])
                 return response
             elif rc != kerberos.AUTH_GSS_CONTINUE:
                 return _forbidden()
